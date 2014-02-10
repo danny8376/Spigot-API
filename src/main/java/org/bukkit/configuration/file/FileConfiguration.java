@@ -8,7 +8,11 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
+// AAM's modification start
+//import java.io.FileWriter;
+import java.io.OutputStreamWriter;
+import java.io.FileOutputStream;
+// AAM's modification end
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -56,7 +60,10 @@ public abstract class FileConfiguration extends MemoryConfiguration {
 
         String data = saveToString();
 
-        FileWriter writer = new FileWriter(file);
+		// AAM's modification start
+        //FileWriter writer = new FileWriter(file);
+		OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(file), "UTF-8");
+		// AAM's modification end
 
         try {
             writer.write(data);
@@ -130,7 +137,7 @@ public abstract class FileConfiguration extends MemoryConfiguration {
     public void load(InputStream stream) throws IOException, InvalidConfigurationException {
         Validate.notNull(stream, "Stream cannot be null");
 
-        InputStreamReader reader = new InputStreamReader(stream);
+        InputStreamReader reader = new InputStreamReader(stream, "UTF-8"); // AAM's modification
         StringBuilder builder = new StringBuilder();
         BufferedReader input = new BufferedReader(reader);
 

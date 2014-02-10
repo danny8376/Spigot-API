@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.spigotmc</groupId>
         <artifactId>spigot-parent</artifactId>
-        <version>dev-SNAPSHOT</version>
+        <version>dev-SNAPSHOT-force-UTF-8</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
